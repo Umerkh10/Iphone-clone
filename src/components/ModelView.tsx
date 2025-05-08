@@ -4,6 +4,7 @@ import * as THREE from "three"
 import Lights from "./Lights"
 import { Suspense } from "react"
 import Iphone from "./Iphone"
+import Loader from "./Loader"
 
 interface ModelViewProps {
   index: number
@@ -39,8 +40,8 @@ function ModelView({ index, groupRef, gsapType, controlRef, setRotationState, it
       />
 
       <group ref={groupRef} name={index === 1 ? "small" : "large"} position={[0, 0, 0]}>
-        <Suspense fallback={null}>
-          <Iphone scale={index === 1 ? [18, 18, 18] : [20, 20, 20]} />
+        <Suspense fallback={<Loader/>}>
+          <Iphone  scale={index === 1 ? [15, 15, 15] : [17, 17, 17]} item={item} size={size} />
         </Suspense>
       </group>
     </View>
