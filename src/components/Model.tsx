@@ -11,6 +11,7 @@ import { View } from "@react-three/drei"
 import { models } from "../constants"
 import { animateWithGsapTimeline } from "../utils/animations"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import "../App.css"
 
 interface ModelData {
   title: string
@@ -39,9 +40,8 @@ function Model() {
 
   const [isAnimating, setIsAnimating] = useState(false)
 
-  // Function to handle slider navigation
   const handleSlideChange = (direction: "next" | "prev") => {
-    if (isAnimating) return // Prevent clicking during animation
+    if (isAnimating) return 
 
     setIsAnimating(true)
     const tl = gsap.timeline({
@@ -52,7 +52,6 @@ function Model() {
     })
 
     if (direction === "next" && activeView === 1) {
-      // Slide view1 out to the left and bring view2 in from the right
       tl.to("#view1", {
         xPercent: -100,
         duration: 1,
@@ -68,7 +67,6 @@ function Model() {
         "<",
       )
     } else if (direction === "prev" && activeView === 2) {
-      // Slide view2 out to the right and bring view1 in from the left
       tl.to("#view2", {
         xPercent: 100,
         duration: 1,
@@ -87,9 +85,8 @@ function Model() {
   }
 
   useEffect(() => {
-    // Initialize positions
     gsap.set("#view1", { xPercent: 0 })
-    gsap.set("#view2", { xPercent: 100 }) // Start off-screen to the right
+    gsap.set("#view2", { xPercent: 100 }) 
   }, [])
 
   useEffect(() => {
@@ -121,7 +118,7 @@ function Model() {
 
   return (
     <section className="sm:py-32 py-20 sm:px-10 px-5">
-      <div className="mx-auto max-w-screen-xl">
+      <div className="screen-max-width mx-auto">
         <h1
           id="heading"
           className="text-gray lg:text-6xl md:text-5xl text-3xl lg:mb-0 mb-5 font-medium opacity-0 translate-y-20"
@@ -131,7 +128,6 @@ function Model() {
 
         <div className="flex flex-col items-center mt-5">
           <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
-            {/* Slider navigation buttons */}
             <div className="absolute top-1/2 left-4 z-10 transform -translate-y-1/2 flex flex-col gap-4">
               <button
                 onClick={() => handleSlideChange("prev")}
@@ -149,7 +145,6 @@ function Model() {
               </button>
             </div>
 
-            {/* Slider indicators */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex gap-2">
               <div
                 className={`w-2 h-2 rounded-full transition-all ${activeView === 1 ? "bg-white w-6" : "bg-white/50"}`}

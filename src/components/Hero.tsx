@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { heroVideo,smallHeroVideo } from "../utils"
 import { useEffect, useState } from "react"
+import '../App.css'
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(window.innerWidth <760 ? smallHeroVideo:heroVideo);
@@ -35,8 +36,8 @@ const Hero = () => {
     })
   },[])
   return (
-    <section className="w-full h-[calc(100vh-60px)] bg-black relative">
-      <div className="h-5/6 w-full flex justify-center items-center flex-col">
+    <section className="w-full h-[calc(100vh-60px)] bg-black relative mx-auto screen-max-width">
+      <div className="h-5/6 w-full flex justify-center items-center flex-col ">
         <h1 id="hero" className=" text-center font-bold md:text-3xl text-xl text-zinc-300 opacity-0 max-md:mb-10  max-sm:mt-10">Apple Series 15</h1>
         <div className="md:w-10/12 w-9/12">
         <video autoPlay muted playsInline={true} key={videoSrc}>

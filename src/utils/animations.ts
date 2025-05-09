@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 /**
  * Animates elements with GSAP timeline
  * @param tl - GSAP timeline instance
@@ -51,3 +53,20 @@ export const animateWithGsapTimeline = (
     '<'
   );
 };
+
+
+export function animateWithGsap(
+  target: gsap.TweenTarget,
+  animationProps: gsap.TweenVars,
+  scrollProps: gsap.plugins.ScrollTriggerInstanceVars
+): void {
+  gsap.to(target, {
+    ...animationProps,
+    scrollTrigger: {
+      trigger: target as gsap.DOMTarget,
+      toggleActions: 'restart reverse restart reverse',
+      start: 'top 85%',
+      ...scrollProps,
+    },
+  });
+}
