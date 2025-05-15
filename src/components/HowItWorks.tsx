@@ -83,7 +83,7 @@ function HowItWorks() {
                         <p className="text-zinc-500 max-w-md text-base  font-semibold animate-text ">
                             Mobile {' '}
                             <span className="text-white">
-                                {" "} games will look and feel so imersive
+                                {" "} games will look and feel so imersive{' '}
                             </span>
                             with incredibly detailed enviroments and characters
                         </p>
